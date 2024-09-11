@@ -46,6 +46,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>To Do</Text>
+        
+      </View>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Add a new task"
@@ -90,6 +94,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5fffa',
     padding: 20,
   },
+  header: {
+    backgroundColor: '#4682b4',
+    padding: 15,
+    borderRadius: 5,
+    marginBottom: 20,
+    marginTop: 30,
+  },
+  headerText: {
+    baseText: {
+      fontFamily: 'Arial',
+    },
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   inputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -101,10 +121,10 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     flex: 1,
     marginRight: 10,
-    padding: 10,
+    padding: 6,
   },
   addButton: {
-    backgroundColor: '#1e3a8a',
+    backgroundColor: '#4682b4',
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
