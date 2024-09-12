@@ -149,29 +149,29 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white', // Lighter background color
+    backgroundColor: '#f7f7f7', 
     padding: 20,
   },
   header: {
-    backgroundColor: '#16423C', // Dark color for header
+    backgroundColor: '#2D3E50', 
     padding: 15,
     borderRadius: 5,
     marginBottom: 20,
     marginTop: 20,
   },
   headerText: {
-    color: 'white', // Lighter color for text
+    color: '#FFFFFF', 
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   searchInput: {
-    borderBottomColor: '#6A9C89', // Medium dark color for border
+    borderBottomColor: 'slategray', 
     borderBottomWidth: 1,
     marginBottom: 20,
     padding: 6,
-    fontSize: 16,
-    color: '#16423C', // Dark color for text
+    fontSize: 14,
+    color: '#16423C', 
   },
   inputContainer: {
     flexDirection: 'row',
@@ -179,21 +179,21 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    borderBottomColor: '#6A9C89', // Medium dark color for border
+    borderBottomColor: 'slategray', 
     borderBottomWidth: 1,
     flex: 1,
     marginRight: 10,
     padding: 6,
-    color: '#16423C', // Dark color for text
+    color: '#16423C',
   },
   addButton: {
-    backgroundColor: '#16423C', // Dark color for button
+    backgroundColor: '#2D3E50', 
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
   },
   addButtonText: {
-    color: 'white', // Lighter color for button text
+    color: '#FFFFFF', 
     fontWeight: 'bold',
     textAlign: 'center',
   },
@@ -203,9 +203,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 15,
     marginVertical: 5,
-    backgroundColor: 'white', // Light color for background
+    backgroundColor: 'white', 
     borderRadius: 5,
-    borderColor: '#cdd1cf', // Lighter color for border
+    borderColor: '#cdd1cf', 
     borderWidth: 1,
   },
   taskDetails: {
@@ -215,10 +215,10 @@ const styles = StyleSheet.create({
   taskText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#16423C', // Dark color for text
+    color: '#2C3E50',
   },
   taskDateTime: {
-    color: '#6A9C89', // Medium dark color for date/time text
+    color: 'lightslategray', 
     fontSize: 12,
   },
   taskActions: {
@@ -233,26 +233,26 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   pending: {
-    backgroundColor: '#aa6f73', // Accent color for pending tasks
-    color: '#fff',
+    backgroundColor: '#FFDD57', 
+    color: '#2C3E50',
   },
   completed: {
-    backgroundColor: '#16423C',
+    backgroundColor: '#399918',
     color: '#fff',
   },
   modalContent: {
-    backgroundColor: '#C4DAD2', // Light color for modal background
+    backgroundColor: 'white', 
     padding: 20,
     borderRadius: 10,
     alignItems: 'center',
   },
   modalInput: {
-    borderBottomColor: '#6A9C89', // Medium dark color for border
+    borderBottomColor: 'slategray', 
     borderBottomWidth: 1,
     width: '100%',
     marginBottom: 20,
     padding: 10,
-    color: '#16423C', // Dark color for text
+    color: '#16423C', 
   },
   modalButtonContainer: {
     flexDirection: 'row',
@@ -260,21 +260,21 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   modalButton: {
-    backgroundColor: '#16423C', // Dark color for buttons
+    backgroundColor: '#2D3E50', 
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
-    marginHorizontal: 5, // Add horizontal margin between buttons
+    marginHorizontal: 32, 
   },
   modalButtonText: {
-    color: '#E9EFEC', // Lighter color for button text
+    color: '#FFFFFF', 
     fontWeight: 'bold',
     textAlign: 'center',
   },
   editIconColor: {
-    color: 'darkorange', // Orange color for edit icon
+    color: '#FFA500', 
   },
   deleteIconColor: {
-    color: 'crimson', // Red color for delete icon
+    color: 'crimson', 
   },
 });
