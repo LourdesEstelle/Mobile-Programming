@@ -112,10 +112,10 @@ export default function App() {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => editTask(item.id)}>
-                <AntDesign name="edit" size={24} color={styles.editIconColor.color} />
+                <AntDesign name="edit" size={23} color={styles.editIconColor.color} />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => confirmDelete(item.id)}>
-                <MaterialIcons name="delete" size={24} color={styles.deleteIconColor.color} />
+                <MaterialIcons name="delete" size={25} color={styles.deleteIconColor.color} />
               </TouchableOpacity>
             </View>
           </View>
@@ -166,12 +166,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   searchInput: {
-    borderBottomColor: 'slategray', 
-    borderBottomWidth: 1,
-    marginBottom: 20,
-    padding: 6,
+    backgroundColor: '#FFFFFF', 
+    borderColor: 'slategray', 
+    borderWidth: 1,
+    borderRadius: 5,
+    width: '100%', 
+    height: 40, 
+    paddingHorizontal: 10,
     fontSize: 14,
-    color: '#16423C', 
+    color: 'darkslategray', 
+    textAlign: 'left', 
+    marginBottom: 20,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -273,6 +278,7 @@ const styles = StyleSheet.create({
   },
   editIconColor: {
     color: '#FFA500', 
+    
   },
   deleteIconColor: {
     color: 'crimson', 
