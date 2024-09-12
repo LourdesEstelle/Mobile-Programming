@@ -1,11 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Alert } from 'react-native';
-import { AntDesign, MaterialIcons } from '@expo/vector-icons'; 
+import { AntDesign, MaterialIcons, Feather } from '@expo/vector-icons'; 
 
 export default function App() {
   const [task, setTask] = useState('');
   const [taskList, setTaskList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isEditing, setIsEditing] = useState(null); // Track the task being edited
+  const [editTaskValue, setEditTaskValue] = useState(''); // Store the updated task value during edit
 
   const addTask = () => {
     if (task.trim().length > 0) {
@@ -44,12 +47,45 @@ export default function App() {
     setTaskList(taskList.filter((item) => item.id !== taskId));
   };
 
+  // Start editing a task
+  const startEditing = (taskId, taskValue) => {
+    setIsEditing(taskId);
+    setEditTaskValue(taskValue); // Set the initial value for editing
+  };
+
+  // Save the edited task
+  const saveTask = (taskId) => {
+    setTaskList(
+      taskList.map((item) => 
+        item.id === taskId ? { ...item, value: editTaskValue } : item
+      )
+    );
+    setIsEditing(null); // Exit editing mode
+  };
+
+  const cancelEdit = () => {
+    setIsEditing(null); // Cancel the edit
+  };
+
+  // Filtered task list based on search term
+  const filteredTasks = taskList.filter((task) => 
+    task.value.includes(searchTerm)
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>To Do</Text>
-        
       </View>
+      
+      {/* Search Input */}
+      <TextInput
+        style={styles.searchInput}
+        placeholder="Search tasks..."
+        value={searchTerm}
+        onChangeText={(text) => setSearchTerm(text)}
+      />
+      
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Add a new task"
@@ -61,24 +97,54 @@ export default function App() {
           <Text style={styles.addButtonText}>Add Task</Text>
         </TouchableOpacity>
       </View>
+
       <FlatList
-        data={taskList}
+        data={filteredTasks}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.taskItem}>
             <View style={styles.taskDetails}>
-              <Text style={styles.taskText}>{item.value}</Text>
-              <Text style={styles.taskDateTime}>{item.date} at {item.time}</Text>
+              {isEditing === item.id ? (
+                // Editing mode: show a TextInput for editing the task
+                <TextInput
+                  style={styles.input}
+                  value={editTaskValue}
+                  onChangeText={(text) => setEditTaskValue(text)}
+                />
+              ) : (
+                <>
+                  <Text style={styles.taskText}>{item.value}</Text>
+                  <Text style={styles.taskDateTime}>{item.date} at {item.time}</Text>
+                </>
+              )}
             </View>
+
             <View style={styles.taskActions}>
-              <TouchableOpacity onPress={() => toggleStatus(item.id)}>
-                <Text style={[styles.status, item.status === 'Completed' ? styles.completed : styles.pending]}>
-                  {item.status}
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => confirmDelete(item.id)}>
-                <MaterialIcons name="delete" size={24} color="red" />
-              </TouchableOpacity>
+              {isEditing === item.id ? (
+                // Show Save and Cancel buttons when editing
+                <>
+                  <TouchableOpacity onPress={() => saveTask(item.id)}>
+                    <Feather name="check" size={24} color="green" />
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={cancelEdit}>
+                    <Feather name="x" size={24} color="red" />
+                  </TouchableOpacity>
+                </>
+              ) : (
+                <>
+                  <TouchableOpacity onPress={() => toggleStatus(item.id)}>
+                    <Text style={[styles.status, item.status === 'Completed' ? styles.completed : styles.pending]}>
+                      {item.status}
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => startEditing(item.id, item.value)}>
+                    <Feather name="edit" size={22} color="mediumorchid" />
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => confirmDelete(item.id)}>
+                    <MaterialIcons name="delete" size={24} color="red" />
+                  </TouchableOpacity>
+                </>
+              )}
             </View>
           </View>
         )}
@@ -109,6 +175,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  searchInput: {
+    borderBottomColor: '#ccc',
+    borderBottomWidth: 1,
+    marginBottom: 20,
+    padding: 6,
+    fontSize: 16,
   },
   inputContainer: {
     flexDirection: 'row',
