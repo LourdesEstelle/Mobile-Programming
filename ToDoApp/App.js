@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Alert } from 'react-native';
-import { AntDesign, MaterialIcons } from '@expo/vector-icons'; // Importing icons
+import { AntDesign, MaterialIcons } from '@expo/vector-icons'; 
 
 export default function App() {
   const [task, setTask] = useState('');
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     marginBottom: 20,
-    marginTop: 30,
+    marginTop: 20,
   },
   headerText: {
     baseText: {
