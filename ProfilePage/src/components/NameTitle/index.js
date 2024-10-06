@@ -1,13 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Text } from 'react-native';
 
 const NameTitle = () => {
   return (
-    <View>
-      <Text style = {{fontSize: 50, textTransform: 'uppercase'}}>Lordweil</Text>
-      <Text style = {{fontSize: 30, color: 'gray', textTransform: 'uppercase'}}>Abalde</Text>
+    <View style={{ alignItems: 'center', marginTop: 20 }}>
+      <Text style={{ fontSize: 50, textTransform: 'uppercase' }}>Lordweil</Text>
+      <Text style={{ fontSize: 30, color: 'gray', textTransform: 'uppercase' }}>Abalde</Text>
     </View>
-  )
+  );
 }
 
-export default NameTitle
+export default NameTitle;

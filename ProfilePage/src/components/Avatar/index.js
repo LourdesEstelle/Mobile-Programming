@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 
-const Avatar = () => {
+const Avatar = ({ width = 150, height = 150 }) => {
   return (
     <View>
       <Image
         source={require('../../assets/avatar.jpg')}
-        style={{ width: 150, height: 150 }}
+        style={{ width, height, borderRadius: width / 2 }}
       />
     </View>
   );
