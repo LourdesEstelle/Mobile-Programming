@@ -1,39 +1,52 @@
 import React from 'react';
-import { View, StyleSheet, Switch, Text, FlatList } from 'react-native';
+import { View, StyleSheet, Switch, Text, FlatList, TouchableOpacity } from 'react-native';
 import ProfileHeader from '../components/ProfileHeader';
+import Icon from 'react-native-vector-icons/Ionicons'; 
 
-const Profile = ({ navigation, profile, darkMode, toggleDarkMode }) => {
-  const options = ['Favourites', 'Downloads', 'Subscription', 'Display'];
+const Profile = ({ navigation, route, profile, darkMode, toggleDarkMode }) => {
+  const updatedProfile = route.params?.profile || profile;
+
+  const options = [
+    { label: 'Birthday', value: updatedProfile.birthday || 'Not set', icon: 'calendar' }, 
+    { label: 'Gender', value: updatedProfile.gender || 'Not set', icon: 'male-female' }, 
+    { label: 'Phone', value: updatedProfile.contactNumber || 'Not set', icon: 'call' }, 
+    { label: 'Username', value: updatedProfile.username || 'Not set', icon: 'person' }, 
+  ];
 
   const handleEditPress = () => {
-    navigation.navigate('EditProfile');
+    navigation.navigate('EditProfile', { profile: updatedProfile });
   };
 
   return (
     <View style={[styles.container, { backgroundColor: darkMode ? '#121212' : '#f8f9fa' }]}>
-      
       <View style={styles.profileContainer}>
         {/* Profile Header */}
         <ProfileHeader
-          name={`${profile.firstName} ${profile.lastName}`}
-          email={profile.email}
+          name={`${updatedProfile.firstName} ${updatedProfile.lastName}`}
+          email={updatedProfile.email}
           onEditPress={handleEditPress}
         />
       </View>
 
-      {/* Dark Mode Toggle */}
-      <View style={styles.darkModeToggle}>
+      {/* Dark Mode Toggle Container */}
+      <View style={[styles.darkModeContainer, { backgroundColor: darkMode ? '#1E1E1E' : '#ffffff' }]}>
         <Text style={{ color: darkMode ? 'white' : 'black' }}>Dark Mode</Text>
-        <Switch value={darkMode} onValueChange={toggleDarkMode} />
+        <TouchableOpacity onPress={toggleDarkMode} style={styles.iconContainer}>
+          <Icon name={darkMode ? 'sunny' : 'moon'} size={24} color={darkMode ? 'white' : 'black'} />
+        </TouchableOpacity>
       </View>
 
       {/* Options List */}
       <FlatList
         data={options}
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => item.label}
         renderItem={({ item }) => (
           <View style={styles.optionContainer}>
-            <Text style={styles.optionText}>{item}</Text>
+            <Icon name={item.icon} size={24} color="black" style={styles.icon} />
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionLabel}>{item.label}</Text>
+              <Text style={styles.optionValue}>{item.value}</Text>
+            </View>
           </View>
         )}
         style={styles.optionsList}
@@ -48,53 +61,57 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   profileContainer: {
-    backgroundColor: '#ffffff', // Background color for the profile container
-    padding: 20, // Padding inside the container
-    borderRadius: 10, // Rounded corners for the container
-    marginVertical: 20, // Margin to separate from other elements
-    shadowColor: '#000', // Optional shadow for better visual appeal
+    backgroundColor: '#ffffff',
+    padding: 20,
+    borderRadius: 20,
+    marginVertical: 20,
+    shadowColor: '#151C62',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
-    elevation: 5, // Adds shadow for Android
+    elevation: 5,
   },
-  textContainer: {
-    padding: 20, // Padding inside the text container
-    alignItems: 'center', // Center text inside the shape
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'black', // Fixed text color (black)
-  },
-  emailText: {
-    fontSize: 14,
-    color: 'gray', // Fixed email color
-    marginTop: 5,
-  },
-  darkModeToggle: {
+  darkModeContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 5,
+    padding: 10,
+    borderRadius: 10,
+    elevation: 2,
+  },
+  iconContainer: {
+    padding: 10,
   },
   optionsList: {
-    marginTop: 20, // Space between the toggle and options list
+    marginTop: 20,
   },
   optionContainer: {
-    backgroundColor: '#ffffff', // Fixed background color for options
-    padding: 15, // Padding inside each option container
-    borderRadius: 10, // Rounded corners for option containers
-    marginVertical: 5, // Spacing between options
-    shadowColor: '#000', // Optional shadow for better visual appeal
+    backgroundColor: '#ffffff',
+    padding: 15,
+    borderRadius: 10,
+    marginVertical: 5,
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
-    elevation: 3, // Adds shadow for Android
+    elevation: 3,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  optionText: {
+  icon: {
+    marginRight: 10,
+  },
+  optionTextContainer: {
+    flex: 1,
+  },
+  optionLabel: {
     fontSize: 16,
-    color: 'black', // Fixed text color (black)
+    color: 'black',
+  },
+  optionValue: {
+    fontSize: 16,
+    color: 'gray',
   },
 });
 
