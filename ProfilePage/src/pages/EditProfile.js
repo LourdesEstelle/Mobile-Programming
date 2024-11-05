@@ -5,7 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 const EditProfile = ({ route, navigation, darkMode }) => {
   const { profile } = route.params || {};
 
-  // Initialize states with profile data or empty strings
+  
   const [firstName, setFirstName] = useState(profile.firstName || '');
   const [lastName, setLastName] = useState(profile.lastName || '');
   const [birthday, setBirthday] = useState(profile.birthday || '');
@@ -39,8 +39,8 @@ const EditProfile = ({ route, navigation, darkMode }) => {
 
   const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || new Date(birthday);
-    setShowDatePicker(Platform.OS === 'ios'); // For iOS, keep picker open until confirmed
-    setBirthday(currentDate.toLocaleDateString()); // Format date
+    setShowDatePicker(Platform.OS === 'ios');  
+    setBirthday(currentDate.toLocaleDateString());  
   };
 
   const handleSave = () => {
@@ -54,7 +54,7 @@ const EditProfile = ({ route, navigation, darkMode }) => {
       username,
     };
     
-    navigation.navigate('Profile', { profile: updatedProfile }); // Pass updated profile back to Profile
+    navigation.navigate('Profile', { profile: updatedProfile });  
   };
 
   return (

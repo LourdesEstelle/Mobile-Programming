@@ -5,8 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Profile from './src/pages/Profile';
 import EditProfile from './src/pages/EditProfile';
-import LoginScreen from './src/pages/LoginScreen'; // Ensure the correct path to LoginScreen
+import LoginScreen from './src/pages/LoginScreen';
 import ForgotPasswordScreen from './src/pages/ForgotPasswordScreen';
+import SignUp from './src/pages/SignUp'; // Ensure the correct path to SignUp screen
 
 const Stack = createStackNavigator();
 
@@ -65,14 +66,21 @@ export default function App() {
               name="LoginScreen" 
               options={{ headerShown: false }}>
               {props => (
-                <LoginScreen {...props} /> // Add LoginScreen with props
+                <LoginScreen {...props} />
               )}
             </Stack.Screen>
             <Stack.Screen 
               name="ForgotPassword" 
               options={{ title: 'Forgot Password' }}>
               {props => (
-                <ForgotPasswordScreen {...props} /> // Add ForgotPasswordScreen with props
+                <ForgotPasswordScreen {...props} />
+              )}
+            </Stack.Screen>
+            <Stack.Screen 
+              name="SignUp" 
+              options={{ title: 'Sign Up' }}>
+              {props => (
+                <SignUp {...props} />
               )}
             </Stack.Screen>
           </Stack.Navigator>

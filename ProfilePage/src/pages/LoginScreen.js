@@ -1,9 +1,12 @@
-// LoginScreen.js
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
-
 const LoginScreen = ({ navigation }) => {
+  const handleLogin = () => {
+    
+    navigation.navigate('Profile');
+  };
+
   return (
     <View style={styles.container}>
       <Image source={require('../assets/Logo.png')} style={styles.logo} /> 
@@ -21,13 +24,13 @@ const LoginScreen = ({ navigation }) => {
         secureTextEntry
       />
 
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Log In</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotPassword}>
-  <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
-</TouchableOpacity>
+        <Text style={styles.forgotPasswordText}>Forgot your password?</Text>
+      </TouchableOpacity>
 
       <View style={styles.socialLoginContainer}>
         <Text style={styles.socialLoginText}>Or login with</Text>
@@ -42,7 +45,10 @@ const LoginScreen = ({ navigation }) => {
       </View>
 
       <Text style={styles.registerText}>
-        Don't have an account? <Text style={styles.registerLink}>Sign Up</Text>
+        Don't have an account? 
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.registerLink}> Sign Up</Text>
+        </TouchableOpacity>
       </Text>
     </View>
   );
@@ -76,7 +82,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 16,
     backgroundColor: '#ffffff',
-    elevation: 2, // Add elevation for shadow effect
+    elevation: 2,
   },
   loginButton: {
     backgroundColor: '#007bff',
@@ -84,7 +90,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '100%',
     alignItems: 'center',
-    elevation: 3, // Elevation for a slightly raised button
+    elevation: 3,
   },
   loginButtonText: {
     color: '#ffffff',

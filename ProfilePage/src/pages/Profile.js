@@ -1,8 +1,7 @@
-// Profile.js
 import React from 'react';
-import { View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native';
-import ProfileHeader from '../components/ProfileHeader';
-import Icon from 'react-native-vector-icons/Ionicons'; 
+import { View, StyleSheet, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Profile = ({ navigation, route, profile, darkMode, toggleDarkMode }) => {
   const updatedProfile = route.params?.profile || profile;
@@ -11,11 +10,11 @@ const Profile = ({ navigation, route, profile, darkMode, toggleDarkMode }) => {
     light: {
       background: '#f8f9fa',
       card: '#ffffff',
-      text: '#000000',
+      text: '#333333',
       label: '#555555',
       accent: '#007bff',
-      icon: '#000000',
-      shadow: '#999999',
+      icon: '#333333',
+      shadow: '#dddddd',
     },
     dark: {
       background: '#121212',
@@ -43,19 +42,48 @@ const Profile = ({ navigation, route, profile, darkMode, toggleDarkMode }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
+       
       <View style={[styles.profileContainer, { backgroundColor: colors.card, shadowColor: colors.shadow }]}>
-        <ProfileHeader
-          name={`${updatedProfile.firstName} ${updatedProfile.lastName}`}
-          email={updatedProfile.email}
-          onEditPress={handleEditPress}
-          darkMode={darkMode}
-        />
+         
+        <Image source={require('../assets/avatar.jpg')} style={styles.profileImage} />
+        
+   
+        <Text style={[styles.name, { color: colors.text }]}>{`${updatedProfile.firstName} ${updatedProfile.lastName}`}</Text>
+        <Text style={[styles.location, { color: colors.label }]}>Cagayan de Oro City</Text>
+        
+        
+        <TouchableOpacity onPress={handleEditPress} style={styles.editProfileButton}>
+          <Text style={styles.editProfileButtonText}>Edit Profile</Text>
+        </TouchableOpacity>
+        
+      
+        <Text style={[styles.bio, { color: colors.text }]}>
+          I am a Scholar from Barangay San Simon, Cagayan de Oro City
+        </Text>
+        
+  
+        <View style={styles.statsContainer}>
+          <View style={styles.stat}>
+            <Text style={[styles.statValue, { color: colors.text }]}>1</Text>
+            <Text style={[styles.statLabel, { color: colors.label }]}>Following</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text style={[styles.statValue, { color: colors.text }]}>120M</Text>
+            <Text style={[styles.statLabel, { color: colors.label }]}>Followers</Text>
+          </View>
+          <View style={styles.stat}>
+            <Text style={[styles.statValue, { color: colors.text }]}>1B</Text>
+            <Text style={[styles.statLabel, { color: colors.label }]}>Likes</Text>
+          </View>
+        </View>
+        
+ 
+        <TouchableOpacity style={styles.followButton}>
+          <Text style={styles.followButtonText}>Follow</Text>
+        </TouchableOpacity>
       </View>
-      
-      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('LoginScreen')}>
-        <Text style={styles.loginButtonText}>Log In</Text>
-      </TouchableOpacity>
-      
+
+    
       <View style={[styles.darkModeContainer, { backgroundColor: colors.card }]}>
         <Text style={[styles.darkModeText, { color: colors.text }]}>Dark Mode</Text>
         <TouchableOpacity onPress={toggleDarkMode} style={styles.iconContainer}>
@@ -63,17 +91,18 @@ const Profile = ({ navigation, route, profile, darkMode, toggleDarkMode }) => {
         </TouchableOpacity>
       </View>
 
+    
       <FlatList
         data={options}
         keyExtractor={(item) => item.label}
         renderItem={({ item }) => (
-          <View style={[styles.optionContainer, { backgroundColor: colors.card, shadowColor: colors.shadow }]}>
+          <TouchableOpacity style={[styles.optionContainer, { backgroundColor: colors.card, shadowColor: colors.shadow }]}>
             <Icon name={item.icon} size={24} color={colors.icon} style={styles.icon} />
             <View style={styles.optionTextContainer}>
               <Text style={[styles.optionLabel, { color: colors.label }]}>{item.label}</Text>
               <Text style={[styles.optionValue, { color: colors.text }]}>{item.value}</Text>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
         style={styles.optionsList}
       />
@@ -87,29 +116,90 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   profileContainer: {
-    padding: 7,
+    alignItems: 'center',
+    padding: 20,
     borderRadius: 20,
     marginVertical: 20,
     shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
+    shadowOpacity: 0.15,
+    shadowRadius: 15,
     elevation: 10,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 15,
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  location: {
+    fontSize: 16,
+    marginTop: 5,
+  },
+  bio: {
+    textAlign: 'center',
+    fontSize: 14,
+    marginVertical: 10,
+    paddingHorizontal: 20,
+  },
+  editProfileButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    marginTop: 10,
+  },
+  editProfileButtonText: {
+    color: '#ffffff',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginVertical: 15,
+  },
+  stat: {
+    alignItems: 'center',
+  },
+  statValue: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  statLabel: {
+    fontSize: 14,
+  },
+  followButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 10,
+    paddingHorizontal: 40,
+    borderRadius: 20,
+    marginTop: 15,
+  },
+  followButtonText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: '600',
   },
   darkModeContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 10,
-    padding: 10,
+    marginTop: 15,
+    padding: 12,
     borderRadius: 12,
     elevation: 3,
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.15,
     shadowRadius: 4,
   },
   darkModeText: {
     fontSize: 18,
-    fontWeight: '500',
+    fontWeight: '600',
   },
   iconContainer: {
     padding: 10,
@@ -118,11 +208,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   optionContainer: {
-    padding: 10,
+    padding: 12,
     borderRadius: 12,
     marginVertical: 8,
     shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.15,
     shadowRadius: 6,
     elevation: 6,
     flexDirection: 'row',
@@ -140,20 +230,8 @@ const styles = StyleSheet.create({
   },
   optionValue: {
     fontSize: 16,
-    marginTop: 4,
+    marginTop: 2,
     fontWeight: '400',
-  },
-  loginButton: {
-    backgroundColor: '#007bff',
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 20,
-    alignItems: 'center',
-  },
-  loginButtonText: {
-    color: '#ffffff',
-    fontSize: 18,
-    fontWeight: '600',
   },
 });
 
