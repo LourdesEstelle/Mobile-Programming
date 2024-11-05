@@ -1,3 +1,4 @@
+// Profile.js
 import React from 'react';
 import { View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native';
 import ProfileHeader from '../components/ProfileHeader';
@@ -50,9 +51,13 @@ const Profile = ({ navigation, route, profile, darkMode, toggleDarkMode }) => {
           darkMode={darkMode}
         />
       </View>
-
+      
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('LoginScreen')}>
+        <Text style={styles.loginButtonText}>Log In</Text>
+      </TouchableOpacity>
+      
       <View style={[styles.darkModeContainer, { backgroundColor: colors.card }]}>
-        <Text style={[styles.darkModeText, { color: colors.text }]}>   Dark Mode</Text>
+        <Text style={[styles.darkModeText, { color: colors.text }]}>Dark Mode</Text>
         <TouchableOpacity onPress={toggleDarkMode} style={styles.iconContainer}>
           <Icon name={darkMode ? 'sunny' : 'moon'} size={24} color={colors.icon} />
         </TouchableOpacity>
@@ -137,6 +142,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 4,
     fontWeight: '400',
+  },
+  loginButton: {
+    backgroundColor: '#007bff',
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  loginButtonText: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: '600',
   },
 });
 

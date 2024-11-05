@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Profile from './src/pages/Profile';
 import EditProfile from './src/pages/EditProfile';
+import LoginScreen from './src/pages/LoginScreen'; // Ensure the correct path to LoginScreen
+import ForgotPasswordScreen from './src/pages/ForgotPasswordScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,15 +23,12 @@ export default function App() {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  // Toggle dark mode
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
-  // Update profile information
   const updateProfile = (newProfile) => {
     setProfile(newProfile);
   };
 
-  // Define color palette for dark and light modes
   const colorPalette = darkMode ? darkTheme : lightTheme;
 
   return (
@@ -37,7 +36,7 @@ export default function App() {
       <SafeAreaView style={[styles.safeArea, { backgroundColor: colorPalette.background }]}>
         <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Profile">
+          <Stack.Navigator initialRouteName="LoginScreen">
             <Stack.Screen 
               name="Profile" 
               options={{ headerShown: false }}>
@@ -60,6 +59,20 @@ export default function App() {
                   updateProfile={updateProfile} 
                   darkMode={darkMode} 
                 />
+              )}
+            </Stack.Screen>
+            <Stack.Screen 
+              name="LoginScreen" 
+              options={{ headerShown: false }}>
+              {props => (
+                <LoginScreen {...props} /> // Add LoginScreen with props
+              )}
+            </Stack.Screen>
+            <Stack.Screen 
+              name="ForgotPassword" 
+              options={{ title: 'Forgot Password' }}>
+              {props => (
+                <ForgotPasswordScreen {...props} /> // Add ForgotPasswordScreen with props
               )}
             </Stack.Screen>
           </Stack.Navigator>
