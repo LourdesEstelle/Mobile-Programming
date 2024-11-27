@@ -41,7 +41,7 @@ export default Recover;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f2f5',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,

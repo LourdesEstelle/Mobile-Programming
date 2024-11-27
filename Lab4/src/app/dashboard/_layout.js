@@ -9,7 +9,7 @@ export default function DrawerLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer drawerContent={DrawerContent}>
         <Drawer.Screen
-          name="(tabs)" // This is the name of the page and must match the url from root
+          name="(tabs)" 
           options={{
             drawerLabel: 'Home',
             title: 'Home',
@@ -23,7 +23,7 @@ export default function DrawerLayout() {
           }}
         />
         <Drawer.Screen
-          name="settings" // This is the name of the page and must match the url from root
+          name="settings"  
           options={{
             drawerLabel: 'Settings',
             title: 'Settings',
@@ -36,7 +36,7 @@ export default function DrawerLayout() {
             ),
           }}
         />
-        {/* Add more drawer items as needed */}
+        
       </Drawer>
     </GestureHandlerRootView>
   );
@@ -45,7 +45,7 @@ export default function DrawerLayout() {
 const styles = StyleSheet.create({
   drawerLabel: {
     fontSize: 18,
-    color: '#333', // Dark text for better contrast
+    color: '#333',  
     fontWeight: '600',
   },
   drawerIcon: {

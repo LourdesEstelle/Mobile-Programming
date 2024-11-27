@@ -15,7 +15,7 @@ const Login = () => {
         <SafeAreaView style={loginStyle.container}>
             <View style={loginStyle.logoSection}>
                 <Image source={require('../assets/logo.png')} style={loginStyle.logo} />
-                <Text variant="headlineLarge" style={loginStyle.brandName}>Facebook</Text>
+                <Text variant="headlineLarge" style={loginStyle.brandName}>Student Portal</Text>
             </View>
             <View style={loginStyle.formSection}>
                 <TextInput
@@ -71,7 +71,7 @@ export default Login;
 const loginStyle = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f0f2f5',
+        backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,

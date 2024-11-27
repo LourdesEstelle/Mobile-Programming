@@ -64,7 +64,7 @@ export default Register;
 const regStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f2f5',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -81,12 +81,12 @@ const regStyle = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: '#1877f2', // Facebook Blue
+    color: '#1877f2',  
     marginTop: 10,
   },
   subtitle: {
     textAlign: 'center',
-    color: '#555', // Neutral gray for readability
+    color: '#555',  
     marginTop: 5,
     marginBottom: 20,
   },

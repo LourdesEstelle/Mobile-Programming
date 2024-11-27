@@ -20,20 +20,28 @@ const Home = () => {
           </View>
           <View style={styles.story}>
             <View style={styles.storyImage} />
-            <Text style={styles.storyName}>John</Text>
+            <Text style={styles.storyName}>Lord</Text>
           </View>
           <View style={styles.story}>
             <View style={styles.storyImage} />
-            <Text style={styles.storyName}>Sarah</Text>
+            <Text style={styles.storyName}>Weil</Text>
           </View>
           <View style={styles.story}>
             <View style={styles.storyImage} />
-            <Text style={styles.storyName}>Mike</Text>
+            <Text style={styles.storyName}>Lourdes</Text>
+          </View>
+          <View style={styles.story}>
+            <View style={styles.storyImage} />
+            <Text style={styles.storyName}>Estelle</Text>
+          </View>
+          <View style={styles.story}>
+            <View style={styles.storyImage} />
+            <Text style={styles.storyName}>Keyt</Text>
           </View>
         </ScrollView>
       </View>
 
-      {/* Create Post Section */}
+     
       <View style={styles.createPostContainer}>
         <TouchableOpacity style={styles.createPostButton}>
           <MaterialCommunityIcons name="plus-circle" size={30} color="#1877F2" />
@@ -41,12 +49,12 @@ const Home = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Posts Section */}
+       
       <View style={styles.postsContainer}>
         <View style={styles.post}>
           <View style={styles.postHeader}>
             <View style={styles.profileImage} />
-            <Text style={styles.postUser}>John Doe</Text>
+            <Text style={styles.postUser}>Keyt Taylor</Text>
           </View>
           <Text style={styles.postText}>Had an amazing day at the beach!</Text>
           <View style={styles.postActions}>
@@ -64,7 +72,7 @@ const Home = () => {
         <View style={styles.post}>
           <View style={styles.postHeader}>
             <View style={styles.profileImage} />
-            <Text style={styles.postUser}>Sarah Lee</Text>
+            <Text style={styles.postUser}>Mc Heaven Abalde</Text>
           </View>
           <Text style={styles.postText}>Just finished coding my new app! 🚀</Text>
           <View style={styles.postActions}>
@@ -82,7 +90,7 @@ const Home = () => {
         <View style={styles.post}>
           <View style={styles.postHeader}>
             <View style={styles.profileImage} />
-            <Text style={styles.postUser}>Mike Turner</Text>
+            <Text style={styles.postUser}>Edward Ratunil</Text>
           </View>
           <Text style={styles.postText}>Enjoying the sunset with friends! 🌅</Text>
           <View style={styles.postActions}>
@@ -98,7 +106,7 @@ const Home = () => {
         </View>
       </View>
 
-      {/* Navigation Buttons */}
+      
       <View style={styles.navigation}>
         <Button mode="contained" style={styles.navButton} compact>
           <MaterialCommunityIcons name="home" size={20} color="white" />
@@ -109,8 +117,8 @@ const Home = () => {
           <Text style={styles.navButtonText}>Profile</Text>
         </Button>
         <Button mode="contained" style={styles.navButton} compact>
-          <MaterialCommunityIcons name="bell" size={20} color="white" />
-          <Text style={styles.navButtonText}>Notifications</Text>
+          <MaterialCommunityIcons name="check" size={20} color="white" />
+          <Text style={styles.navButtonText}>Friends</Text>
         </Button>
       </View>
     </ScrollView>
@@ -126,12 +134,12 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#1877F2',
-    padding: 20,
+    padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   headerTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
   },
@@ -151,7 +159,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#B0BEC5', // Placeholder for story image
+    backgroundColor: '#B0BEC5',  
     marginBottom: 5,
   },
   storyName: {
@@ -199,7 +207,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#B0BEC5', // Placeholder for profile image
+    backgroundColor: '#B0BEC5',  
     marginRight: 10,
   },
   postUser: {

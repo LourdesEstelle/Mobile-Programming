@@ -12,7 +12,7 @@ const Profile = () => {
         <View style={styles.bannerImage} />
         <View style={styles.profileInfoContainer}>
           <View style={styles.profilePicture} />
-          <Text style={styles.profileName}>John Doe</Text>
+          <Text style={styles.profileName}>Lordweil E. Abalde</Text>
           <Text style={styles.profileBio}>Web Developer | Coffee Enthusiast | Travel Lover</Text>
         </View>
       </View>
@@ -23,7 +23,7 @@ const Profile = () => {
           Edit Profile
         </Button>
         <Button mode="contained" style={styles.actionButton} compact>
-          Add Friend
+          Create Post
         </Button>
         <Button mode="outlined" style={styles.actionButton} compact>
           Message
@@ -33,9 +33,9 @@ const Profile = () => {
       {/* About Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>About</Text>
-        <Text style={styles.text}>Age: 28</Text>
-        <Text style={styles.text}>Location: San Francisco, CA</Text>
-        <Text style={styles.text}>Occupation: Software Engineer</Text>
+        <Text style={styles.text}>Age: 21</Text>
+        <Text style={styles.text}>Location: Cagayan de Oro City, Philippines</Text>
+        <Text style={styles.text}>Occupation: IT Student</Text>
         <TouchableOpacity style={styles.editButton}>
           <MaterialCommunityIcons name="pencil" size={20} color="#1877F2" />
           <Text style={styles.editText}>Edit Info</Text>

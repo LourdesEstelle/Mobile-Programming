@@ -138,6 +138,6 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   buttonLabel: {
-    fontSize: 14,  // Smaller font size
+    fontSize: 14,  
   },
 });
