@@ -11,7 +11,7 @@ const Settings = () => {
   
       <Text style={styles.header}>Settings</Text>
       
- 
+      {/* Account Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Account</Text>
         <View style={styles.row}>
@@ -22,14 +22,12 @@ const Settings = () => {
           <Text style={styles.rowText}>Email</Text>
           <Text style={styles.rowText}>abalde.lordweil123.com</Text>
         </View>
-        
-       
         <Button mode="outlined" style={styles.actionButton} labelStyle={styles.buttonLabel}>
           Edit Profile
         </Button>
       </View>
       
-    
+      {/* Privacy Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Privacy</Text>
         <View style={styles.row}>
@@ -40,14 +38,12 @@ const Settings = () => {
           <Text style={styles.rowText}>Two-factor authentication</Text>
           <Text style={styles.rowText}>Enabled</Text>
         </View>
-        
-      
         <Button mode="outlined" style={styles.actionButton} labelStyle={styles.buttonLabel}>
           Change Password
         </Button>
       </View>
-
-     
+      
+      {/* Notifications Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Notifications</Text>
         <View style={styles.row}>
@@ -58,14 +54,50 @@ const Settings = () => {
           <Text style={styles.rowText}>Push notifications</Text>
           <Text style={styles.rowText}>Off</Text>
         </View>
-
-        
         <Button mode="outlined" style={styles.actionButton} labelStyle={styles.buttonLabel}>
           Manage Notifications
         </Button>
       </View>
 
-   
+      {/* Language Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Language</Text>
+        <View style={styles.row}>
+          <Text style={styles.rowText}>Preferred Language</Text>
+          <Text style={styles.rowText}>English</Text>
+        </View>
+        <Button mode="outlined" style={styles.actionButton} labelStyle={styles.buttonLabel}>
+          Change Language
+        </Button>
+      </View>
+
+      {/* App Theme Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>App Theme</Text>
+        <View style={styles.row}>
+          <Text style={styles.rowText}>Current Theme</Text>
+          <Text style={styles.rowText}>Light</Text>
+        </View>
+        <Button mode="outlined" style={styles.actionButton} labelStyle={styles.buttonLabel}>
+          Change Theme
+        </Button>
+      </View>
+
+      {/* Help & Support Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Help & Support</Text>
+        <View style={styles.row}>
+          <Text style={styles.rowText}>Help Center</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowText}>Report a Problem</Text>
+        </View>
+        <Button mode="outlined" style={styles.actionButton} labelStyle={styles.buttonLabel}>
+          Get Help
+        </Button>
+      </View>
+
+      {/* Logout Button */}
       <View style={styles.buttonContainer}>
         <Button
           mode="contained"

@@ -7,7 +7,7 @@ const Profile = () => {
   return (
     <ScrollView style={styles.container}>
       
-      {/* Profile Banner */}
+    
       <View style={styles.bannerContainer}>
         <View style={styles.bannerImage} />
         <View style={styles.profileInfoContainer}>
@@ -17,7 +17,7 @@ const Profile = () => {
         </View>
       </View>
 
-      {/* Actions Buttons */}
+    
       <View style={styles.buttonContainer}>
         <Button mode="contained" style={styles.actionButton} compact>
           Edit Profile
@@ -30,7 +30,7 @@ const Profile = () => {
         </Button>
       </View>
 
-      {/* About Section */}
+      
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>About</Text>
         <Text style={styles.text}>Age: 21</Text>
@@ -42,7 +42,7 @@ const Profile = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Friends List */}
+      
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Friends</Text>
         <ScrollView horizontal={true} style={styles.friendsList}>
@@ -54,7 +54,7 @@ const Profile = () => {
         </ScrollView>
       </View>
 
-      {/* Photos Section */}
+     
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Photos</Text>
         <ScrollView horizontal={true} style={styles.photosList}>
@@ -65,8 +65,7 @@ const Profile = () => {
           <View style={styles.photoImage} />
         </ScrollView>
       </View>
-
-      {/* Post Section */}
+ 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Posts</Text>
         <View style={styles.post}>
@@ -92,7 +91,15 @@ const Profile = () => {
         </View>
       </View>
 
-       
+    
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Activity Status</Text>
+        <View style={styles.activityStatus}>
+          <MaterialCommunityIcons name="circle" size={14} color="#4CAF50" />
+          <Text style={styles.statusText}>Online</Text>
+        </View>
+      </View>
+
       
     </ScrollView>
   );
@@ -225,6 +232,15 @@ const styles = StyleSheet.create({
   likeText: {
     fontSize: 14,
     color: '#1877F2',
+    marginLeft: 5,
+  },
+  activityStatus: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  statusText: {
+    fontSize: 16,
+    color: '#4CAF50',
     marginLeft: 5,
   },
   logoutButtonContainer: {
